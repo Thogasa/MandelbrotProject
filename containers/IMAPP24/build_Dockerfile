@@ -1,0 +1,16 @@
+FROM ubuntu
+
+#Set frontend to noninteractive and set Timezone to that of rome
+ENV DEBIAN_FRONTEND=noninteractive \
+    TZ=Europe/Rome
+
+RUN apt-get update
+RUN apt-get upgrade
+#-y needed to skip "sure to install [y/n]"  question
+RUN apt-get install -y cmake
+RUN apt-get install -yq build-essential
+RUN apt-get install -y libtbb-dev
+RUN apt-get install -y  libsfml-dev
+
+
+CMD ["./mnt/build.sh"]
